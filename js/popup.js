@@ -113,12 +113,41 @@
                 return visibleInsideFrameX && visibleInsideFrameY && visibleInParentX && visibleInParentY;
             }
 
-            
+            /**
+             * Affinage Vertical : On place la popup légèrement au dessus du lien.
+             * Si il n'y a pas assez de place au dessus, on le place en dessous.
+             * 
+             * @returns la position Y a appliquer réellement à la popup
+             */
+            function improvePositionY(){
+                const marge = 10;
+                let popupHeight = popup.clientHeight;
+                let linkHeight = LinkRect.height;
+
+                if(LinkYFromParent > (popupHeight + marge)){
+                    return LinkYFromParent - popupHeight;
+                } else {
+                    return LinkYFromParent + linkHeight + marge;
+                }      
+            }
+
+
+            /**
+             * Affinage Horizontal : On centre la popup par rapport au lien
+             * 
+             * @returns la position X a ppliquer à la popup.
+             */
+            function improvePositionX(){
+                let popupWidth = popup.clientWidth;
+                return LinkXFromParent - (popupWidth / 2) + (LinkRect.width / 2);
+            }
+
+
             if(isLinkVisible()){
                 if(!isPopupDisplayed()){
                     togglePopup(true);
                 }
-                updatePopupStyle(LinkXFromParent,LinkYFromParent);
+                updatePopupStyle(improvePositionX(),improvePositionY());
             } else {
                 togglePopup(false);
             }
