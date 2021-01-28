@@ -3,6 +3,12 @@
 Le but est de modifier [popup.js](js/popup.js) pour positionner la popup
 à proximité du lien cliqué, en tenant compte du scroll dans et en dehors de l'iframe.
 
+## Solution
+
+Une solution est présentée sur la [branche `solution`](https://github.com/jimetevenard/pedago-popin-position/tree/solution).
+
+Les fichiers de cette branche sont servis sur https://jimetevenard.github.io/pedago-popin-position/ pour démonstration.
+
 ## Fichiers du projet
 
 | Fichier | Description |
